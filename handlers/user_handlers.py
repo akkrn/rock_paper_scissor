@@ -20,7 +20,7 @@ async def process_help_command(message: Message):
 
 @router.message(Text(text=LEXICON_RU["yes_button"]))
 async def process_yes_answer(message: Message):
-    await message.answer(text=LEXICON_RU["yes"])
+    await message.answer(text=LEXICON_RU["yes"], reply_markup=game_kb)
 
 
 @router.message(Text(text=LEXICON_RU["no_button"]))
@@ -39,4 +39,4 @@ async def process_game_button(message: Message):
         text=f'{LEXICON_RU["bot_choice"]}' f" - {LEXICON_RU[bot_choice]}"
     )
     winner = get_winner(message.text, bot_choice)
-    await message.answer(text=LEXICON_RU[winner], reply_markup=yes_no_kb())
+    await message.answer(text=LEXICON_RU[winner], reply_markup=yes_no_kb)
